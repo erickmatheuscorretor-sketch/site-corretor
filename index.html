@@ -1,0 +1,1597 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Máquina de Leads para Corretores | Especial Minha Casa Minha Vida</title>
+  <meta name="description" content="O método passo a passo para corretores do MCMV gerarem leads qualificados todos os dias e fecharem vendas todo mês, mesmo começando do zero." />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="Máquina de Leads para Corretores — Especial MCMV" />
+  <meta property="og:description" content="Chega de depender de lista de imobiliária. Tenha leads do Minha Casa Minha Vida chamando você todos os dias." />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ============================================================
+       VARIÁVEIS & RESET
+    ============================================================ */
+    :root {
+      --navy:      #0B1F3A;
+      --navy-2:    #112240;
+      --navy-3:    #0d2b4e;
+      --gold:      #F5B301;
+      --gold-2:    #E5A800;
+      --gold-light:#FEF3C7;
+      --green:     #16A34A;
+      --green-h:   #15803D;
+      --green-mcmv:#009640;  /* verde oficial MCMV */
+      --red:       #DC2626;
+      --white:     #FFFFFF;
+      --gray-50:   #F8FAFC;
+      --gray-100:  #F1F5F9;
+      --gray-200:  #E2E8F0;
+      --gray-600:  #475569;
+      --gray-800:  #1E293B;
+      --radius:    16px;
+      --radius-sm: 10px;
+      --shadow:    0 4px 24px rgba(0,0,0,.10);
+      --shadow-lg: 0 8px 40px rgba(0,0,0,.18);
+      --shadow-xl: 0 16px 60px rgba(0,0,0,.22);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Poppins', system-ui, sans-serif;
+      background: var(--white);
+      color: var(--gray-800);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    img { max-width: 100%; display: block; }
+    a   { text-decoration: none; color: inherit; }
+    ul  { list-style: none; }
+
+
+    /* ============================================================
+       0. URGENCY BAR
+    ============================================================ */
+    #urgency-bar {
+      position: fixed;
+      top: 0; left: 0; width: 100%;
+      z-index: 1000;
+      background: var(--red);
+      color: var(--white);
+      text-align: center;
+      padding: 10px 16px;
+      font-size: .82rem;
+      font-weight: 600;
+    }
+    #urgency-bar .bar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    #countdown {
+      font-family: 'Courier New', monospace;
+      font-size: 1.1rem;
+      font-weight: 800;
+      background: rgba(0,0,0,.28);
+      padding: 2px 12px;
+      border-radius: 6px;
+      letter-spacing: .08em;
+    }
+    body { padding-top: 50px; }
+
+
+    /* ============================================================
+       MCMV BADGE GLOBAL — usado em múltiplas seções
+    ============================================================ */
+    .mcmv-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--white);
+      border: 2px solid var(--green-mcmv);
+      border-radius: 999px;
+      padding: 5px 16px 5px 5px;
+      font-size: .72rem;
+      font-weight: 700;
+      color: var(--green-mcmv);
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+    .mcmv-badge .mcmv-logo-wrap {
+      background: var(--green-mcmv);
+      border-radius: 50%;
+      width: 28px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    /* SVG inline do logo MCMV simplificado */
+    .mcmv-icon { width: 18px; height: 18px; fill: white; }
+
+
+    /* ============================================================
+       1. HERO
+    ============================================================ */
+    #hero {
+      background: linear-gradient(160deg, var(--navy) 0%, var(--navy-3) 55%, #0a3d1a 100%);
+      color: var(--white);
+      padding: 52px 20px 0;
+      overflow: hidden;
+    }
+
+    .hero-top {
+      text-align: center;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    /* MCMV badge + eyebrow */
+    .hero-badges {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 22px;
+    }
+    .hero-eyebrow {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--navy);
+      font-size: .72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      padding: 5px 16px;
+      border-radius: 999px;
+    }
+
+    .hero-headline {
+      font-size: clamp(1.55rem, 4.5vw, 2.9rem);
+      font-weight: 900;
+      line-height: 1.18;
+      margin-bottom: 18px;
+    }
+    .hero-headline .gold  { color: var(--gold); }
+    .hero-headline .green { color: #4ADE80; }
+
+    .hero-sub {
+      font-size: clamp(.9rem, 2vw, 1.1rem);
+      color: rgba(255,255,255,.82);
+      max-width: 600px;
+      margin: 0 auto 32px;
+    }
+
+    /* BANNER HERO IMAGE */
+    .hero-banner-wrap {
+      position: relative;
+      max-width: 820px;
+      margin: 0 auto 36px;
+      border-radius: var(--radius) var(--radius) 0 0;
+      overflow: hidden;
+      box-shadow: var(--shadow-xl);
+    }
+    .hero-banner-wrap img {
+      width: 100%;
+      border-radius: var(--radius) var(--radius) 0 0;
+      object-fit: cover;
+    }
+    /* Overlay gradiente suave na parte de baixo para fundir com a próxima seção */
+    .hero-banner-wrap::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 60px;
+      background: linear-gradient(to top, var(--navy-3) 0%, transparent 100%);
+      pointer-events: none;
+    }
+    /* Tag flutuante no banner */
+    .hero-float-tag {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: var(--red);
+      color: white;
+      font-size: .7rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      padding: 6px 14px;
+      border-radius: 999px;
+      box-shadow: 0 4px 12px rgba(220,38,38,.5);
+      animation: blink-tag 1.6s ease-in-out infinite;
+    }
+    @keyframes blink-tag {
+      0%,100% { opacity: 1; }
+      50%      { opacity: .6; }
+    }
+
+    /* OFFERS GRID */
+    .offers-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    @media (min-width: 768px) {
+      .offers-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    .offer-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      color: var(--gray-800);
+      position: relative;
+      box-shadow: var(--shadow-xl);
+      display: flex;
+      flex-direction: column;
+    }
+    .offer-card.featured {
+      border: 2.5px solid var(--gold);
+    }
+    .badge-best {
+      position: absolute;
+      top: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--gold);
+      color: var(--navy);
+      font-size: .68rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      padding: 4px 16px;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+    .offer-title {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 16px;
+      line-height: 1.3;
+    }
+    .offer-list { margin-bottom: 22px; flex: 1; }
+    .offer-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: .88rem;
+      color: var(--gray-600);
+      margin-bottom: 9px;
+      line-height: 1.45;
+    }
+    .offer-list li .icon { flex-shrink: 0; margin-top: 1px; }
+    .bonus-label {
+      display: inline-block;
+      font-size: .66rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--gold-2);
+      background: var(--gold-light);
+      padding: 2px 7px;
+      border-radius: 4px;
+      margin-bottom: 4px;
+    }
+    .price-block { text-align: center; margin-bottom: 18px; }
+    .price-from  { font-size: .82rem; color: #94A3B8; }
+    .price-original { text-decoration: line-through; font-weight: 600; }
+    .price-now {
+      font-size: 2.1rem;
+      font-weight: 900;
+      color: var(--navy);
+      line-height: 1.1;
+    }
+    .price-now .currency { font-size: 1rem; vertical-align: super; font-weight: 700; }
+
+    /* CAPA DO EBOOK dentro do card */
+    .offer-ebook-cover {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 18px;
+    }
+    .offer-ebook-cover img {
+      width: 52%;
+      max-width: 170px;
+      border-radius: 8px;
+      box-shadow:
+        6px 6px 0 0 rgba(0,0,0,.18),
+        12px 12px 0 0 rgba(0,0,0,.09);
+      transform: perspective(500px) rotateY(-6deg);
+      transition: transform .35s ease, box-shadow .35s ease;
+      display: block;
+    }
+    .offer-ebook-cover img:hover {
+      transform: perspective(500px) rotateY(0deg) scale(1.04);
+      box-shadow:
+        0 8px 32px rgba(0,0,0,.22);
+    }
+    /* No card featured a capa fica levemente maior */
+    .offer-card.featured .offer-ebook-cover img {
+      width: 55%;
+      max-width: 185px;
+    }
+
+    /* BOTÃO PULSANTE */
+    .btn-buy {
+      display: block;
+      width: 100%;
+      background: var(--green);
+      color: var(--white);
+      font-family: 'Poppins', sans-serif;
+      font-size: .9rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      padding: 17px 20px;
+      border-radius: 12px;
+      border: none;
+      cursor: pointer;
+      text-align: center;
+      line-height: 1.3;
+      transition: background .2s, transform .1s;
+      animation: pulse-buy 2s ease-in-out infinite;
+      text-decoration: none;
+    }
+    .btn-buy:hover { background: var(--green-h); }
+    @keyframes pulse-buy {
+      0%,100% { transform: scale(1);     box-shadow: 0 0 0 0   rgba(22,163,74,.55); }
+      50%      { transform: scale(1.025); box-shadow: 0 0 0 14px rgba(22,163,74,0);  }
+    }
+
+    /* TRUST ROW */
+    .trust-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      flex-wrap: wrap;
+      margin-top: 28px;
+      padding: 22px 0 0;
+      border-top: 1px solid rgba(255,255,255,.14);
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: rgba(255,255,255,.82);
+      font-size: .8rem;
+      font-weight: 500;
+    }
+
+
+    /* ============================================================
+       SEÇÕES GENÉRICAS
+    ============================================================ */
+    section { padding: 68px 20px; }
+    .container { max-width: 960px; margin: 0 auto; }
+    .section-title {
+      font-size: clamp(1.35rem, 3vw, 2rem);
+      font-weight: 800;
+      color: var(--navy);
+      text-align: center;
+      margin-bottom: 10px;
+      line-height: 1.25;
+    }
+    .section-title .gold  { color: var(--gold-2); }
+    .section-title .green { color: var(--green); }
+    .section-sub {
+      text-align: center;
+      color: var(--gray-600);
+      font-size: .93rem;
+      margin-bottom: 44px;
+      max-width: 560px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+
+    /* ============================================================
+       2. DEPOIMENTOS
+    ============================================================ */
+    #testimonials { background: var(--gray-50); }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+    }
+    @media (min-width: 600px) { .testimonials-grid { grid-template-columns: repeat(2,1fr); } }
+    @media (min-width: 960px) { .testimonials-grid { grid-template-columns: repeat(3,1fr); } }
+
+    .testimonial-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 22px 20px;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      border-left: 4px solid var(--gold);
+    }
+    .stars { font-size: .95rem; letter-spacing: 2px; }
+    .testimonial-text { font-size: .88rem; color: var(--gray-600); line-height: 1.65; flex: 1; font-style: italic; }
+    .testimonial-author { display: flex; align-items: center; gap: 10px; }
+    .avatar {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: var(--navy); color: var(--white);
+      font-weight: 800; font-size: .95rem;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .author-name { font-weight: 700; font-size: .85rem; color: var(--navy); }
+    .author-city { font-size: .75rem; color: #94A3B8; }
+
+    .cta-after-testimonials {
+      max-width: 460px;
+      margin: 44px auto 0;
+      text-align: center;
+    }
+    .cta-after-testimonials p {
+      font-size: .82rem;
+      color: var(--gray-600);
+      margin-bottom: 14px;
+    }
+
+
+    /* ============================================================
+       3. SEÇÃO DE DOR — layout com imagem
+    ============================================================ */
+    #pain { background: var(--navy); color: var(--white); padding: 0; }
+
+    .pain-wrapper {
+      display: grid;
+      grid-template-columns: 1fr;
+      min-height: 520px;
+    }
+    @media (min-width: 768px) {
+      .pain-wrapper { grid-template-columns: 1fr 1fr; }
+    }
+
+    /* Coluna de imagem */
+    .pain-visual {
+      position: relative;
+      overflow: hidden;
+      min-height: 340px;
+    }
+    .pain-visual img.pain-main-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+    /* Overlay gradiente sobre a foto */
+    .pain-visual-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to right,
+        transparent 40%,
+        var(--navy) 100%
+      );
+    }
+    @media (max-width: 767px) {
+      .pain-visual-overlay {
+        background: linear-gradient(
+          to bottom,
+          transparent 50%,
+          var(--navy) 100%
+        );
+      }
+    }
+    /* WhatsApp frustration mockup flutuante */
+    .pain-whatsapp-float {
+      position: absolute;
+      bottom: 24px;
+      left: 24px;
+      width: clamp(120px, 38%, 200px);
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(0,0,0,.5);
+      border: 3px solid rgba(255,255,255,.15);
+      animation: float-anim 3.5s ease-in-out infinite;
+    }
+    @keyframes float-anim {
+      0%,100% { transform: translateY(0); }
+      50%      { transform: translateY(-8px); }
+    }
+
+    /* Coluna de texto */
+    .pain-content {
+      padding: 52px 32px 52px 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    @media (max-width: 767px) { .pain-content { padding: 36px 24px 48px; } }
+
+    .pain-content .section-title { color: var(--white); text-align: left; }
+    .pain-content .section-sub   { color: rgba(255,255,255,.6); text-align: left; margin-left: 0; }
+
+    .pain-list { margin-bottom: 28px; }
+    .pain-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: .95rem;
+      margin-bottom: 13px;
+      color: rgba(255,255,255,.9);
+      line-height: 1.5;
+    }
+    .pain-list li .xi { font-size: 1rem; flex-shrink: 0; margin-top: 2px; }
+
+    .pain-turn {
+      background: var(--gold);
+      color: var(--navy);
+      font-weight: 800;
+      font-size: 1rem;
+      padding: 18px 22px;
+      border-radius: var(--radius-sm);
+      line-height: 1.45;
+    }
+
+
+    /* ============================================================
+       4. SOLUÇÃO — layout com mockup WhatsApp
+    ============================================================ */
+    #solution { background: var(--gray-50); }
+
+    .solution-inner {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+    @media (min-width: 768px) {
+      .solution-inner { grid-template-columns: 1fr 1fr; }
+    }
+
+    .solution-text .section-title { text-align: left; }
+    .solution-text .section-sub   { text-align: left; margin-left: 0; }
+
+    .benefits-list { margin-top: 8px; }
+    .benefits-list .benefit-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      margin-bottom: 20px;
+      background: var(--white);
+      padding: 16px 18px;
+      border-radius: var(--radius-sm);
+      box-shadow: var(--shadow);
+      border-left: 4px solid var(--green);
+    }
+    .benefit-icon {
+      font-size: 1.6rem;
+      flex-shrink: 0;
+      width: 46px;
+      height: 46px;
+      background: #F0FDF4;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .benefit-body h3 { font-size: .95rem; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+    .benefit-body p  { font-size: .83rem; color: var(--gray-600); line-height: 1.55; }
+
+    /* Coluna direita — mockup WhatsApp */
+    .solution-visual {
+      position: relative;
+      display: flex;
+      justify-content: center;
+    }
+    .solution-visual img {
+      width: 100%;
+      max-width: 420px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-xl);
+      animation: float-anim 4s ease-in-out infinite;
+    }
+    /* Badge de novos leads flutuante */
+    .leads-badge-float {
+      position: absolute;
+      top: -18px;
+      right: 0;
+      background: var(--green);
+      color: white;
+      font-size: .78rem;
+      font-weight: 800;
+      padding: 8px 16px;
+      border-radius: 999px;
+      box-shadow: 0 4px 14px rgba(22,163,74,.45);
+      white-space: nowrap;
+    }
+
+
+    /* ============================================================
+       5. O QUE VOCÊ VAI RECEBER — com banner MCMV
+    ============================================================ */
+    #whats-inside { background: var(--white); }
+
+    /* Bloco destaque MCMV */
+    .mcmv-highlight {
+      background: linear-gradient(135deg, #003d1a 0%, #006630 100%);
+      border-radius: var(--radius);
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr;
+      margin-bottom: 36px;
+      box-shadow: var(--shadow-xl);
+    }
+    @media (min-width: 768px) {
+      .mcmv-highlight { grid-template-columns: 1fr 1fr; }
+    }
+    .mcmv-highlight-img {
+      overflow: hidden;
+      max-height: 320px;
+    }
+    .mcmv-highlight-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      transition: transform .4s;
+    }
+    .mcmv-highlight-img img:hover { transform: scale(1.03); }
+
+    .mcmv-highlight-text {
+      padding: 36px 32px;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .mcmv-highlight-text .mcmv-badge {
+      background: rgba(255,255,255,.12);
+      border-color: rgba(255,255,255,.4);
+      color: white;
+      margin-bottom: 16px;
+      align-self: flex-start;
+    }
+    .mcmv-highlight-text .mcmv-badge .mcmv-logo-wrap { background: white; }
+    .mcmv-highlight-text .mcmv-badge .mcmv-icon { fill: var(--green-mcmv); }
+    .mcmv-highlight-text h3 {
+      font-size: 1.3rem;
+      font-weight: 800;
+      margin-bottom: 10px;
+      line-height: 1.3;
+    }
+    .mcmv-highlight-text h3 span { color: var(--gold); }
+    .mcmv-highlight-text p {
+      font-size: .88rem;
+      color: rgba(255,255,255,.8);
+      line-height: 1.65;
+      margin-bottom: 18px;
+    }
+    .mcmv-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .mcmv-tag {
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.25);
+      color: white;
+      font-size: .72rem;
+      font-weight: 600;
+      padding: 5px 12px;
+      border-radius: 999px;
+    }
+
+    /* Cards de conteúdo */
+    .inside-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+    }
+    @media (min-width: 768px) { .inside-grid { grid-template-columns: 1fr 1fr; } }
+
+    .inside-card {
+      border-radius: var(--radius);
+      padding: 26px 22px;
+      box-shadow: var(--shadow);
+    }
+    .inside-card.base    { border: 2px solid var(--gray-200); }
+    .inside-card.premium { border: 2px solid var(--gold); background: #FFFBEB; }
+
+    .inside-card-title {
+      font-size: .98rem;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .inside-card ul li {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: .86rem;
+      color: var(--gray-600);
+      margin-bottom: 9px;
+      line-height: 1.45;
+    }
+
+
+    /* ============================================================
+       6. GARANTIA
+    ============================================================ */
+    #guarantee { background: var(--gray-50); }
+
+    .guarantee-box {
+      background: var(--white);
+      border: 3px solid var(--green);
+      border-radius: var(--radius);
+      padding: 44px 36px;
+      text-align: center;
+      max-width: 520px;
+      margin: 0 auto;
+      box-shadow: var(--shadow-lg);
+    }
+    .guarantee-seal { font-size: 4rem; margin-bottom: 14px; display: block; }
+    .guarantee-box h2 { font-size: 1.3rem; font-weight: 800; color: var(--navy); margin-bottom: 12px; }
+    .guarantee-box p  { font-size: .92rem; color: var(--gray-600); line-height: 1.7; }
+
+
+    /* ============================================================
+       7. FAQ
+    ============================================================ */
+    #faq { background: var(--white); }
+
+    .faq-list { max-width: 680px; margin: 0 auto; }
+    .faq-item { border-bottom: 1px solid var(--gray-200); overflow: hidden; }
+    .faq-item:first-child { border-top: 1px solid var(--gray-200); }
+
+    .faq-question {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      padding: 20px 4px;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: .93rem;
+      color: var(--navy);
+      user-select: none;
+      -webkit-user-select: none;
+    }
+    .faq-question:hover { color: var(--gold-2); }
+    .faq-icon {
+      font-size: 1.2rem;
+      flex-shrink: 0;
+      transition: transform .3s;
+      color: var(--gold-2);
+    }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .35s ease, padding .3s;
+      font-size: .88rem;
+      color: var(--gray-600);
+      line-height: 1.7;
+      padding: 0 4px;
+    }
+    .faq-item.open .faq-answer { max-height: 400px; padding-bottom: 20px; }
+
+
+    /* ============================================================
+       8. CTA FINAL
+    ============================================================ */
+    #cta-final {
+      background: linear-gradient(160deg, var(--navy) 0%, var(--navy-2) 100%);
+      color: var(--white);
+    }
+    #cta-final .section-title { color: var(--white); }
+    #cta-final .section-sub   { color: rgba(255,255,255,.72); }
+
+    #cta-final .offer-card {
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.14);
+      color: var(--white);
+    }
+    #cta-final .offer-card.featured { border-color: var(--gold); background: rgba(245,179,1,.07); }
+    #cta-final .offer-title  { color: var(--white); }
+    #cta-final .offer-list li{ color: rgba(255,255,255,.82); }
+    #cta-final .price-now    { color: var(--gold); }
+    #cta-final .price-from   { color: rgba(255,255,255,.5); }
+    #cta-final .trust-row    { border-top-color: rgba(255,255,255,.1); }
+
+
+    /* ============================================================
+       9. RODAPÉ
+    ============================================================ */
+    footer {
+      background: var(--gray-800);
+      color: rgba(255,255,255,.5);
+      text-align: center;
+      padding: 36px 20px;
+      font-size: .78rem;
+      line-height: 1.85;
+    }
+    footer strong { color: rgba(255,255,255,.78); }
+    .footer-links { margin-top: 10px; }
+    .footer-links a {
+      color: rgba(255,255,255,.45);
+      text-decoration: underline;
+      margin: 0 8px;
+      font-size: .75rem;
+    }
+    .footer-links a:hover { color: var(--white); }
+
+
+    /* ============================================================
+       UTILITÁRIOS
+    ============================================================ */
+    .text-center { text-align: center; }
+    .mt-8  { margin-top: 8px;  }
+    .mt-16 { margin-top: 16px; }
+    .mt-24 { margin-top: 24px; }
+    .mt-32 { margin-top: 32px; }
+    .mt-40 { margin-top: 40px; }
+
+    /* ============================================================
+       RESPONSIVIDADE EXTRA
+    ============================================================ */
+    @media (max-width: 375px) {
+      .hero-headline  { font-size: 1.38rem; }
+      .price-now      { font-size: 1.85rem; }
+      .btn-buy        { font-size: .8rem; padding: 14px 14px; }
+      .pain-content   { padding: 28px 18px 36px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       0. URGENCY BAR
+  ============================================================ -->
+  <div id="urgency-bar">
+    <div class="bar-inner" id="urgency-content">
+      <span>⚠️ ATENÇÃO: oferta especial encerra em</span>
+      <span id="countdown">00:15:00</span>
+    </div>
+  </div>
+
+
+  <!-- ============================================================
+       1. HERO + OFERTAS
+  ============================================================ -->
+  <section id="hero">
+    <div class="hero-top container">
+
+      <!-- Badges: MCMV + Eyebrow -->
+      <div class="hero-badges">
+        <!-- Badge MCMV -->
+        <span class="mcmv-badge">
+          <span class="mcmv-logo-wrap">
+            <!-- Ícone casa MCMV simplificado em SVG -->
+            <svg class="mcmv-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+            </svg>
+          </span>
+          Especial Minha Casa Minha Vida
+        </span>
+        <span class="hero-eyebrow">🏠 Exclusivo para Corretores de Imóveis</span>
+      </div>
+
+      <h1 class="hero-headline">
+        Chega de Depender de Lista de Imobiliária:<br />
+        Tenha Leads do <span class="gold">MCMV</span> Chamando<br class="br-desktop" />
+        <span class="green">VOCÊ</span> Todos os Dias
+      </h1>
+
+      <p class="hero-sub">
+        O método passo a passo para gerar leads qualificados de clientes do Minha Casa Minha Vida de forma constante — e fechar vendas todo mês, mesmo começando do zero.
+      </p>
+    </div>
+
+    <!-- BANNER HERO IMAGE -->
+    <div class="hero-banner-wrap">
+      <img
+        src="img/banner-hero.png"
+        alt="Máquina de Leads para Corretores — Especial Minha Casa Minha Vida"
+        loading="eager"
+      />
+      <div class="hero-float-tag">🔥 Oferta por tempo limitado</div>
+    </div>
+
+    <!-- CARDS DE OFERTA -->
+    <div class="container">
+      <div class="offers-grid">
+
+        <!-- OFERTA 1 -->
+        <div class="offer-card" id="card-offer-1">
+          <!-- Capa do e-book -->
+          <div class="offer-ebook-cover">
+            <img
+              src="img/capa-oferta-1.png"
+              alt="E-book Robô de Leads para Corretor de Imóveis"
+              loading="eager"
+            />
+          </div>
+          <h2 class="offer-title">🤖 Robô de Leads para Corretor de Imóveis</h2>
+          <ul class="offer-list">
+            <li><span class="icon">✅</span><span>Método completo da Máquina de Leads — passo a passo</span></li>
+            <li><span class="icon">✅</span><span>Como captar clientes do MCMV todos os dias</span></li>
+            <li><span class="icon">✅</span><span>Acesso imediato e vitalício ao conteúdo</span></li>
+          </ul>
+          <div class="price-block">
+            <div class="price-from">De <span class="price-original" id="price-from-1">R$ 97,00</span></div>
+            <div class="price-now" id="price-now-1">
+              <span class="currency">R$</span> <span id="price-value-1">29,90</span>
+            </div>
+          </div>
+          <a href="LINK_CHECKOUT_OFERTA_1" class="btn-buy" id="btn-offer-1">
+            🚀 QUERO O ROBÔ DE LEADS AGORA
+          </a>
+        </div>
+
+        <!-- OFERTA 2 -->
+        <div class="offer-card featured" id="card-offer-2">
+          <div class="badge-best">⭐ MAIS ESCOLHIDA • MELHOR CUSTO-BENEFÍCIO</div>
+          <!-- Capa do e-book -->
+          <div class="offer-ebook-cover" style="margin-top:18px;">
+            <img
+              src="img/capa-oferta-2.png"
+              alt="E-book Máquina de Leads + Bônus Exclusivos"
+              loading="eager"
+            />
+          </div>
+          <h2 class="offer-title">💎 Máquina de Leads + Bônus Exclusivos</h2>
+          <ul class="offer-list">
+            <li><span class="icon">✅</span><span>Método completo da Máquina de Leads — passo a passo</span></li>
+            <li><span class="icon">✅</span><span>Como captar clientes do MCMV todos os dias</span></li>
+            <li><span class="icon">✅</span><span>Acesso imediato e vitalício</span></li>
+            <li style="margin-top:12px;">
+              <span class="icon">🎁</span>
+              <span>
+                <span class="bonus-label">Bônus 1</span><br />
+                Pack de Mensagens Prontas para WhatsApp — copiar, colar e vender
+              </span>
+            </li>
+            <li>
+              <span class="icon">🎁</span>
+              <span>
+                <span class="bonus-label">Bônus 2</span><br />
+                Guia de Quebra de Objeções — "vou pensar", "está caro" e muito mais
+              </span>
+            </li>
+            <li>
+              <span class="icon">🎁</span>
+              <span>
+                <span class="bonus-label">Bônus 3</span><br />
+                Planilha de Controle de Comissões
+              </span>
+            </li>
+          </ul>
+          <div class="price-block">
+            <div class="price-from">De <span class="price-original" id="price-from-2">R$ 147,00</span></div>
+            <div class="price-now" id="price-now-2">
+              <span class="currency">R$</span> <span id="price-value-2">49,90</span>
+            </div>
+          </div>
+          <a href="LINK_CHECKOUT_OFERTA_2" class="btn-buy" id="btn-offer-2">
+            💎 QUERO A VERSÃO COMPLETA COM BÔNUS
+          </a>
+        </div>
+
+      </div><!-- /offers-grid -->
+
+      <!-- Trust badges -->
+      <div class="trust-row">
+        <div class="trust-item">🔒 Compra 100% segura</div>
+        <div class="trust-item">⚡ Acesso imediato</div>
+        <div class="trust-item">🛡️ Garantia de 7 dias</div>
+        <div class="trust-item">🏠 Leads MCMV qualificados</div>
+      </div>
+    </div>
+  </section><!-- /hero -->
+
+
+  <!-- ============================================================
+       2. DEPOIMENTOS
+  ============================================================ -->
+  <section id="testimonials">
+    <div class="container">
+      <h2 class="section-title">Corretores que já aplicaram o método</h2>
+      <p class="section-sub">Resultados reais de pessoas que estavam exatamente onde você está agora.</p>
+
+      <div class="testimonials-grid">
+
+        <div class="testimonial-card">
+          <div class="stars">⭐⭐⭐⭐⭐</div>
+          <p class="testimonial-text">"Esse método mudou minha vida como corretor do MCMV. Antes eu vivia esperando a lista da imobiliária. Hoje os clientes me procuram direto no WhatsApp — e ainda escolho com quem quero trabalhar."</p>
+          <div class="testimonial-author">
+            <div class="avatar">C</div>
+            <div><div class="author-name">Carlos M.</div><div class="author-city">São Paulo — SP</div></div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="stars">⭐⭐⭐⭐⭐</div>
+          <p class="testimonial-text">"Conteúdo completo e direto. Em poucas semanas minha agenda estava cheia de visitas de clientes interessados no programa. Nunca imaginei que seria tão simples."</p>
+          <div class="testimonial-author">
+            <div class="avatar">F</div>
+            <div><div class="author-name">Fernanda L.</div><div class="author-city">Curitiba — PR</div></div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="stars">⭐⭐⭐⭐⭐</div>
+          <p class="testimonial-text">"As mensagens prontas para WhatsApp economizam muito tempo. Só copio, colo — e o cliente responde. Parece mágica, mas é estratégia pura."</p>
+          <div class="testimonial-author">
+            <div class="avatar">R</div>
+            <div><div class="author-name">Ricardo A.</div><div class="author-city">Belo Horizonte — MG</div></div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="stars">⭐⭐⭐⭐⭐</div>
+          <p class="testimonial-text">"Fechei minha primeira venda no mês seguinte à compra. Sem exagero. Valeu cada centavo — e olha que comprei o plano mais simples."</p>
+          <div class="testimonial-author">
+            <div class="avatar">P</div>
+            <div><div class="author-name">Patricia S.</div><div class="author-city">Porto Alegre — RS</div></div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="stars">⭐⭐⭐⭐⭐</div>
+          <p class="testimonial-text">"A quebra de objeções mudou completamente meu jogo. Hoje sei exatamente o que responder quando o cliente diz 'vou pensar'. Minha taxa de fechamento dobrou."</p>
+          <div class="testimonial-author">
+            <div class="avatar">M</div>
+            <div><div class="author-name">Marcos T.</div><div class="author-city">Salvador — BA</div></div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="stars">⭐⭐⭐⭐⭐</div>
+          <p class="testimonial-text">"Simples de aplicar e funciona de verdade. Recomendo para todo corretor que quer parar de depender dos outros e tomar o controle da própria renda."</p>
+          <div class="testimonial-author">
+            <div class="avatar">J</div>
+            <div><div class="author-name">Juliana C.</div><div class="author-city">Brasília — DF</div></div>
+          </div>
+        </div>
+
+      </div><!-- /testimonials-grid -->
+
+      <div class="cta-after-testimonials">
+        <p>Esses resultados estão esperando por você. Comece agora:</p>
+        <a href="LINK_CHECKOUT_OFERTA_2" class="btn-buy">💎 QUERO MEU ACESSO AGORA</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       3. SEÇÃO DE DOR — com foto do corretor desesperado + mockup WhatsApp
+  ============================================================ -->
+  <section id="pain" style="padding:0;">
+    <div class="pain-wrapper">
+
+      <!-- Coluna visual: foto + mockup flutuante -->
+      <div class="pain-visual">
+        <img
+          class="pain-main-img"
+          src="img/corretor-desesperado.png"
+          alt="Corretor desesperado sem leads, mãos na cabeça, lista de imobiliária vazia"
+          loading="lazy"
+        />
+        <div class="pain-visual-overlay"></div>
+
+        <!-- WhatsApp frustração flutua sobre a foto -->
+        <img
+          class="pain-whatsapp-float"
+          src="img/whatsapp-frustrado.png"
+          alt="WhatsApp com mensagens sem resposta — corretor frustrado"
+          loading="lazy"
+        />
+      </div>
+
+      <!-- Coluna de texto -->
+      <div class="pain-content">
+        <h2 class="section-title" style="text-align:left;color:white;">
+          Você se identifica<br />com isso?
+        </h2>
+        <p class="section-sub" style="text-align:left;margin-left:0;color:rgba(255,255,255,.6);margin-bottom:24px;">
+          Se qualquer item abaixo soar familiar, você está no lugar certo.
+        </p>
+
+        <ul class="pain-list">
+          <li><span class="xi">❌</span> Vive sem leads e não sabe de onde vem o próximo cliente</li>
+          <li><span class="xi">❌</span> Depende 100% de lista de imobiliária para trabalhar</li>
+          <li><span class="xi">❌</span> Gastou dinheiro com anúncio pago e não teve retorno</li>
+          <li><span class="xi">❌</span> Termina o mês sem fechar nenhuma venda</li>
+          <li><span class="xi">❌</span> Vê outros corretores vendendo enquanto você espera</li>
+          <li><span class="xi">❌</span> Manda mensagem pro lead e não recebe resposta</li>
+        </ul>
+
+        <div class="pain-turn">
+          🟢 A boa notícia: isso tem solução, e não depende de sorte.<br />
+          Depende de <strong>método</strong>.
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       4. SOLUÇÃO — com mockup WhatsApp de +128 leads
+  ============================================================ -->
+  <section id="solution">
+    <div class="container">
+      <div class="solution-inner">
+
+        <!-- Texto -->
+        <div class="solution-text">
+          <h2 class="section-title" style="text-align:left;">
+            Conheça a <span class="gold">Máquina de Leads</span><br />
+            <small style="font-size:.65em;color:var(--green);font-weight:700;">Especial Minha Casa Minha Vida</small>
+          </h2>
+          <p class="section-sub" style="text-align:left;margin-left:0;">
+            Um sistema que trabalha por você — gerando leads qualificados do MCMV todo dia, de forma previsível.
+          </p>
+
+          <div class="benefits-list">
+            <div class="benefit-item">
+              <div class="benefit-icon">📥</div>
+              <div class="benefit-body">
+                <h3>Leads de MCMV todos os dias</h3>
+                <p>Pare de aguardar listas. Atraia interessados no programa todos os dias — sem implorar por indicação.</p>
+              </div>
+            </div>
+            <div class="benefit-item">
+              <div class="benefit-icon">🏆</div>
+              <div class="benefit-body">
+                <h3>Independência total</h3>
+                <p>Sua própria fonte de clientes. Trabalhe com quem quiser, nos imóveis que quiser, no seu ritmo.</p>
+              </div>
+            </div>
+            <div class="benefit-item">
+              <div class="benefit-icon">📈</div>
+              <div class="benefit-body">
+                <h3>Vendas previsíveis todo mês</h3>
+                <p>Com leads constantes, suas vendas ficam previsíveis e crescentes — sem depender de sorte.</p>
+              </div>
+            </div>
+            <div class="benefit-item">
+              <div class="benefit-icon">🗺️</div>
+              <div class="benefit-body">
+                <h3>Passo a passo sem complicação</h3>
+                <p>Zero experiência em tecnologia necessária. Se usa o celular, você já consegue aplicar o método.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Visual: mockup WhatsApp leads -->
+        <div class="solution-visual">
+          <div class="leads-badge-float">📲 +128 novos leads hoje</div>
+          <img
+            src="img/whatsapp-leads.png"
+            alt="WhatsApp com 128 novos leads do Minha Casa Minha Vida prontos para atendimento"
+            loading="lazy"
+          />
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       5. O QUE VOCÊ VAI RECEBER — com banner MCMV
+  ============================================================ -->
+  <section id="whats-inside">
+    <div class="container">
+      <h2 class="section-title">O que você vai receber</h2>
+      <p class="section-sub">Conteúdo pensado para a realidade do corretor de imóveis brasileiro — foco total no Minha Casa Minha Vida.</p>
+
+      <!-- Destaque MCMV com banner -->
+      <div class="mcmv-highlight">
+        <div class="mcmv-highlight-img">
+          <img
+            src="img/banner-mcmv.png"
+            alt="Máquina de Leads para Corretores — Especial Minha Casa Minha Vida"
+            loading="lazy"
+          />
+        </div>
+        <div class="mcmv-highlight-text">
+          <span class="mcmv-badge">
+            <span class="mcmv-logo-wrap">
+              <svg class="mcmv-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+              </svg>
+            </span>
+            Minha Casa Minha Vida
+          </span>
+          <h3>Feito para o corretor<br /><span>especialista em MCMV</span></h3>
+          <p>
+            Leads que já estão interessados no programa, com renda compatível e prontos para visitar. Você recebe scripts, ferramentas e roteiros adaptados à realidade do MCMV.
+          </p>
+          <div class="mcmv-tags">
+            <span class="mcmv-tag">Leads qualificados MCMV</span>
+            <span class="mcmv-tag">Scripts prontos</span>
+            <span class="mcmv-tag">Roteiros de captação</span>
+            <span class="mcmv-tag">Planilha de leads</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cards de conteúdo -->
+      <div class="inside-grid">
+        <div class="inside-card base">
+          <div class="inside-card-title">🤖 Oferta 1 — Robô de Leads</div>
+          <ul>
+            <li><span>✅</span><span>Método completo em vídeo-aulas práticas</span></li>
+            <li><span>✅</span><span>Como captar clientes do MCMV usando só o celular</span></li>
+            <li><span>✅</span><span>Estratégias orgânicas — sem investir em anúncios</span></li>
+            <li><span>✅</span><span>Como filtrar leads e focar só em quem tem potencial</span></li>
+            <li><span>✅</span><span>Acesso imediato + vitalício, sem mensalidade</span></li>
+          </ul>
+        </div>
+        <div class="inside-card premium">
+          <div class="inside-card-title" style="color:var(--gold-2);">💎 Oferta 2 — Versão Completa + Bônus</div>
+          <ul>
+            <li><span>✅</span><span>Tudo da Oferta 1, mais:</span></li>
+            <li><span>🎁</span><span><strong>Mensagens Prontas para WhatsApp</strong> — primeiro contato, follow-up e fechamento. Só copiar e colar.</span></li>
+            <li><span>🎁</span><span><strong>Guia de Quebra de Objeções</strong> — "vou pensar", "está caro", "preciso falar com meu cônjuge" e muito mais.</span></li>
+            <li><span>🎁</span><span><strong>Planilha de Controle de Comissões</strong> — organize negociações abertas, fechadas e valores a receber.</span></li>
+          </ul>
+        </div>
+      </div><!-- /inside-grid -->
+
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       6. GARANTIA
+  ============================================================ -->
+  <section id="guarantee">
+    <div class="container">
+      <h2 class="section-title">Risco <span class="green">zero</span> para você</h2>
+      <div class="guarantee-box">
+        <span class="guarantee-seal">🛡️</span>
+        <h2>Garantia Incondicional de 7 Dias</h2>
+        <p>
+          Acesse o método, aplique e veja os resultados. Se por qualquer motivo você não ficar satisfeito nos primeiros <strong>7 dias</strong>, é só nos chamar e devolvemos <strong>100% do seu dinheiro</strong> — sem burocracia, sem perguntas.
+        </p>
+        <p style="margin-top:12px;font-size:.82rem;color:#94A3B8;">
+          Você não tem nada a perder. A única decisão errada é não tentar.
+        </p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       7. FAQ
+  ============================================================ -->
+  <section id="faq">
+    <div class="container">
+      <h2 class="section-title">Perguntas frequentes</h2>
+      <p class="section-sub">Ficou alguma dúvida? A gente responde.</p>
+
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>Como recebo o acesso após a compra?</span>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-answer">
+            Imediatamente após a confirmação do pagamento, você recebe um e-mail com o link de acesso à plataforma. É só clicar, criar seu cadastro e já começar. Funciona 100% online, em qualquer dispositivo.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>Funciona para corretor iniciante?</span>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-answer">
+            Sim, especialmente para iniciantes. O método foi construído do zero para quem ainda não tem carteira de clientes, não tem dinheiro para anúncios e não tem experiência com marketing digital. Se você tem um celular e disposição, funciona pra você.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>Preciso investir em anúncios pagos?</span>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-answer">
+            Não. A Máquina de Leads foca em estratégias orgânicas, sem precisar gastar com tráfego pago. Você vai aprender a usar o que já tem — principalmente o celular e o WhatsApp — para atrair leads qualificados do MCMV sem desembolsar nada a mais.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>Por quanto tempo tenho acesso ao conteúdo?</span>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-answer">
+            O acesso é vitalício. Você paga uma vez e acessa para sempre — incluindo todas as atualizações futuras, sem mensalidade.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>E se eu não gostar? Tenho garantia?</span>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-answer">
+            Sim. Você tem 7 dias de garantia incondicional. Se por qualquer razão não ficar satisfeito, basta entrar em contato e reembolsamos 100% do valor pago. Sem perguntas, sem burocracia.
+          </div>
+        </div>
+      </div><!-- /faq-list -->
+
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       8. CTA FINAL
+  ============================================================ -->
+  <section id="cta-final">
+    <div class="container">
+      <h2 class="section-title">Sua última chance de garantir <span class="gold">o preço especial</span></h2>
+      <p class="section-sub">Escolha seu plano e comece a gerar leads do MCMV hoje mesmo.</p>
+
+      <div class="offers-grid">
+
+        <!-- OFERTA 1 — CTA -->
+        <div class="offer-card" id="card-offer-1-cta">
+          <!-- Capa do e-book -->
+          <div class="offer-ebook-cover">
+            <img
+              src="img/capa-oferta-1.png"
+              alt="E-book Robô de Leads para Corretor de Imóveis"
+              loading="lazy"
+            />
+          </div>
+          <h2 class="offer-title">🤖 Robô de Leads para Corretor</h2>
+          <ul class="offer-list">
+            <li><span class="icon">✅</span><span>Método completo da Máquina de Leads</span></li>
+            <li><span class="icon">✅</span><span>Captação de leads MCMV todos os dias</span></li>
+            <li><span class="icon">✅</span><span>Acesso imediato e vitalício</span></li>
+          </ul>
+          <div class="price-block">
+            <div class="price-from">De <span class="price-original" id="price-from-1-cta">R$ 97,00</span></div>
+            <div class="price-now" id="price-now-1-cta">
+              <span class="currency">R$</span> <span id="price-value-1-cta">29,90</span>
+            </div>
+          </div>
+          <a href="LINK_CHECKOUT_OFERTA_1" class="btn-buy" id="btn-offer-1-cta">
+            🚀 QUERO O ROBÔ DE LEADS AGORA
+          </a>
+        </div>
+
+        <!-- OFERTA 2 — CTA -->
+        <div class="offer-card featured" id="card-offer-2-cta">
+          <div class="badge-best">⭐ MAIS ESCOLHIDA • MELHOR CUSTO-BENEFÍCIO</div>
+          <!-- Capa do e-book -->
+          <div class="offer-ebook-cover" style="margin-top:18px;">
+            <img
+              src="img/capa-oferta-2.png"
+              alt="E-book Máquina de Leads + Bônus Exclusivos"
+              loading="lazy"
+            />
+          </div>
+          <h2 class="offer-title">💎 Máquina de Leads + Bônus</h2>
+          <ul class="offer-list">
+            <li><span class="icon">✅</span><span>Método completo + bônus exclusivos</span></li>
+            <li><span class="icon">🎁</span><span>Mensagens prontas para WhatsApp</span></li>
+            <li><span class="icon">🎁</span><span>Guia de quebra de objeções</span></li>
+            <li><span class="icon">🎁</span><span>Planilha de controle de comissões</span></li>
+          </ul>
+          <div class="price-block">
+            <div class="price-from">De <span class="price-original" id="price-from-2-cta">R$ 147,00</span></div>
+            <div class="price-now" id="price-now-2-cta">
+              <span class="currency">R$</span> <span id="price-value-2-cta">49,90</span>
+            </div>
+          </div>
+          <a href="LINK_CHECKOUT_OFERTA_2" class="btn-buy" id="btn-offer-2-cta">
+            💎 QUERO A VERSÃO COMPLETA COM BÔNUS
+          </a>
+        </div>
+
+      </div><!-- /offers-grid -->
+
+      <div class="trust-row">
+        <div class="trust-item">🔒 Compra 100% segura</div>
+        <div class="trust-item">⚡ Acesso imediato</div>
+        <div class="trust-item">🛡️ Garantia de 7 dias</div>
+        <div class="trust-item">🏠 Leads MCMV qualificados</div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       9. RODAPÉ
+  ============================================================ -->
+  <footer>
+    <strong>Máquina de Leads para Corretores — Especial Minha Casa Minha Vida</strong><br />
+    Este produto é destinado a corretores de imóveis que desejam aprender estratégias de captação de leads.<br />
+    Este produto é independente e não possui vínculo oficial com o programa Minha Casa Minha Vida ou com o Governo Federal.<br />
+    Os resultados podem variar de pessoa para pessoa. Resultados apresentados são baseados em casos reais e não garantem os mesmos resultados para todos os usuários.
+    <div class="footer-links">
+      <a href="LINK_TERMOS_DE_USO">Termos de Uso</a>
+      <a href="LINK_POLITICA_DE_PRIVACIDADE">Política de Privacidade</a>
+    </div>
+    <div style="margin-top:10px;font-size:.72rem;">© 2025 Máquina de Leads para Corretores. Todos os direitos reservados.</div>
+  </footer>
+
+
+  <!-- ============================================================
+       JAVASCRIPT
+  ============================================================ -->
+  <script>
+    /* ====================================================================
+       VARIÁVEIS DE CONFIGURAÇÃO — edite aqui
+    ==================================================================== */
+    var CONFIG = {
+      TIMER_MINUTOS:            15,
+      PRECO_PROMO_OFERTA_1:     '29,90',
+      PRECO_PROMO_OFERTA_2:     '49,90',
+      PRECO_ORIGINAL_OFERTA_1:  '97,00',
+      PRECO_ORIGINAL_OFERTA_2:  '147,00',
+      LINK_CHECKOUT_OFERTA_1:   'https://pay.hotmart.com/I108068332V?checkoutMode=10',
+      LINK_CHECKOUT_OFERTA_2:   'https://pay.hotmart.com/Y108068380T',
+      STORAGE_KEY:              'maquina_leads_v2_timer_end'
+    };
+
+
+    /* ====================================================================
+       CONTADOR REGRESSIVO — persistência localStorage
+    ==================================================================== */
+    (function initCountdown() {
+      var countdownEl    = document.getElementById('countdown');
+      var urgencyBar     = document.getElementById('urgency-bar');
+      var urgencyContent = document.getElementById('urgency-content');
+
+      var now     = Date.now();
+      var endTime;
+      var saved   = localStorage.getItem(CONFIG.STORAGE_KEY);
+
+      if (saved && parseInt(saved, 10) > now) {
+        endTime = parseInt(saved, 10);
+      } else {
+        endTime = now + CONFIG.TIMER_MINUTOS * 60 * 1000;
+        localStorage.setItem(CONFIG.STORAGE_KEY, endTime);
+      }
+
+      function pad(n) { return String(n).padStart(2, '0'); }
+
+      function formatTime(ms) {
+        if (ms <= 0) return '00:00:00';
+        var t = Math.floor(ms / 1000);
+        return pad(Math.floor(t / 3600)) + ':' +
+               pad(Math.floor((t % 3600) / 60)) + ':' +
+               pad(t % 60);
+      }
+
+      function hidePriceFrom(id) {
+        var el = document.getElementById(id);
+        if (el) {
+          var parent = el.closest('.price-from');
+          if (parent) parent.style.display = 'none';
+        }
+      }
+
+      function onExpired() {
+        urgencyBar.style.background = '#374151';
+        urgencyContent.innerHTML = '⏱️ Oferta encerrada — preço normal restabelecido';
+
+        // Atualiza preços Hero
+        var v1 = document.getElementById('price-value-1');
+        var v2 = document.getElementById('price-value-2');
+        if (v1) v1.textContent = CONFIG.PRECO_ORIGINAL_OFERTA_1;
+        if (v2) v2.textContent = CONFIG.PRECO_ORIGINAL_OFERTA_2;
+        hidePriceFrom('price-from-1');
+        hidePriceFrom('price-from-2');
+
+        // Atualiza preços CTA Final
+        var v1c = document.getElementById('price-value-1-cta');
+        var v2c = document.getElementById('price-value-2-cta');
+        if (v1c) v1c.textContent = CONFIG.PRECO_ORIGINAL_OFERTA_1;
+        if (v2c) v2c.textContent = CONFIG.PRECO_ORIGINAL_OFERTA_2;
+        hidePriceFrom('price-from-1-cta');
+        hidePriceFrom('price-from-2-cta');
+
+        // Para a animação dos botões
+        document.querySelectorAll('.btn-buy').forEach(function(b) {
+          b.style.animation = 'none';
+        });
+      }
+
+      function tick() {
+        var remaining = endTime - Date.now();
+        if (remaining <= 0) {
+          if (countdownEl) countdownEl.textContent = '00:00:00';
+          onExpired();
+          return;
+        }
+        if (countdownEl) countdownEl.textContent = formatTime(remaining);
+        setTimeout(tick, 500);
+      }
+
+      if (endTime <= now) {
+        onExpired();
+        if (countdownEl) countdownEl.textContent = '00:00:00';
+      } else {
+        tick();
+      }
+    })();
+
+
+    /* ====================================================================
+       FAQ — ACORDEÃO
+    ==================================================================== */
+    (function initFaq() {
+      var items = document.querySelectorAll('.faq-item');
+      items.forEach(function(item) {
+        item.querySelector('.faq-question').addEventListener('click', function() {
+          var wasOpen = item.classList.contains('open');
+          items.forEach(function(i) { i.classList.remove('open'); });
+          if (!wasOpen) item.classList.add('open');
+        });
+      });
+    })();
+
+
+    /* ====================================================================
+       LINKS DE CHECKOUT — aplicados dinamicamente
+    ==================================================================== */
+    (function applyLinks() {
+      ['btn-offer-1', 'btn-offer-1-cta'].forEach(function(id) {
+        var el = document.getElementById(id);
+        if (el) el.href = CONFIG.LINK_CHECKOUT_OFERTA_1;
+      });
+      ['btn-offer-2', 'btn-offer-2-cta'].forEach(function(id) {
+        var el = document.getElementById(id);
+        if (el) el.href = CONFIG.LINK_CHECKOUT_OFERTA_2;
+      });
+      /* CTA dos depoimentos */
+      document.querySelectorAll('a.btn-buy:not([id])').forEach(function(btn) {
+        if (btn.href && btn.href.indexOf('OFERTA_2') !== -1) {
+          btn.href = CONFIG.LINK_CHECKOUT_OFERTA_2;
+        }
+      });
+    })();
+
+
+    /* ====================================================================
+       SCROLL SUAVE PARA ÂNCORAS INTERNAS
+    ==================================================================== */
+    document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+      a.addEventListener('click', function(e) {
+        e.preventDefault();
+        var target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          window.scrollTo({ top: target.getBoundingClientRect().top + window.pageYOffset - 56, behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
